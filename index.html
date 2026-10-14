@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PULSE / RESPONSE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div class="wordmark">STATE#36<span> / Pulse response</span></div>
+      <div class="status"><i></i><span id="statusText">SIMULATION</span></div>
+    </header>
+
+    <section class="experience">
+      <aside class="data">
+        <p class="eyebrow">HEART RATE</p>
+        <div class="bpm"><span id="bpm">072</span><small>BPM</small></div>
+        <div class="hairline"></div>
+        <p class="eyebrow state-label">CURRENT STATE</p>
+        <p id="state" class="state">STEADY</p>
+      </aside>
+
+      <section class="media-column">
+        <div class="video-frame" id="videoFrame">
+          <!-- 영상 파일을 준비하면 아래 video 태그의 주석을 해제하고 src를 지정하세요. -->
+          <!-- <video id="artVideo" src="media/your-video.mp4" autoplay muted loop playsinline></video> -->
+          <div class="visual-container" id="visualContainer">
+          <div id="visualCanvas"></div>
+          <div class="visual-overlay">
+    <span id="visualName">WHITE SMOKE</span>
+    <span>HEART RATE <span id="lightValue">--</span> BPM</span>
+  </div>
+</div>
+<!-- 측정 시작 화면 -->
+<div class="start-overlay" id="startOverlay">
+  <form class="start-panel" id="measurementForm">
+    <p class="start-kicker">STATE#36 / PARTICIPANT</p>
+
+    <h2>심박 측정</h2>
+
+    <p class="start-description">
+      이름을 입력하고 측정을 시작하세요.
+    </p>
+
+    <label for="participantName">NAME / NICKNAME</label>
+
+    <input
+      id="participantName"
+      name="participantName"
+      type="text"
+      maxlength="24"
+      placeholder="이름 또는 닉네임"
+      autocomplete="off"
+      required
+    >
+
+    <button id="startMeasurement" type="submit">
+      측정 시작 <span aria-hidden="true">↗</span>
+    </button>
+
+    <p class="start-note" id="startNotice" aria-live="polite"></p>
+  </form>
+</div>
+<span class="frame-index">01</span>
+        </div>
+        <div class="wave-area">
+          <div class="wave-meta"><span>LIVE SIGNAL</span><span id="beatCount">0001</span></div>
+          <svg class="wave" viewBox="0 0 900 92" preserveAspectRatio="none" aria-label="심박 반응 파형">
+            <path class="wave-baseline" d="M0 46 H900" />
+            <path class="wave-path" id="wavePath" d="M0 46 H120 L132 44 L143 46 H250 L263 46 L275 18 L288 70 L301 46 H440 L454 44 L466 46 H575 L588 46 L600 18 L613 70 L626 46 H760 L773 44 L785 46 H900" />
+          </svg>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer"><span>BODY → SIGNAL → IMAGE</span><span id="clock">00:00:00</span></footer>
+  </main>
+
+  <audio
+  id="introMusic"
+  src="audio/0922.wav"
+  preload="auto"
+  loop
+></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"
+  onerror="console.error('[LOAD ERROR] p5.js')">
+</script>
+
+<script
+  src="visuals.js?v=2"
+  onerror="console.error('[LOAD ERROR] visuals.js')">
+</script>
+
+<script
+  src="music.js?v=2"
+  onerror="console.error('[LOAD ERROR] music.js')">
+</script>
+
+<script
+  src="effects.js?v=2"
+  onerror="console.error('[LOAD ERROR] effects.js')">
+</script>
+
+<script
+  src="script.js?v=2"
+  onerror="console.error('[LOAD ERROR] script.js')">
+</script>
+
+<script>
+  console.log('[MODULE CHECK]', {
+    PulseMusic: typeof window.PulseMusic,
+    PulseEffects: typeof window.PulseEffects
+  });
+</script>
+
+</body>
+</html>
